@@ -1,0 +1,16 @@
+div.container {
+    margin-top: 1rem;
+}
+
+#response_text {
+    padding-top: 1rem;
+}
+
+#address {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#status-panel {
+    padding: 1rem;
+}

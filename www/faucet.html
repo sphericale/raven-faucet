@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Faucet</title>
+  <meta name="description" content="Faucet">
+  <meta name="author" content="nbits">
+
+  <link rel="stylesheet" href="css/faucet.css?v=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=grecaptcha-key-goes-here"></script>
+</head>
+
+<body>
+  <script src="js/faucet.js"></script>
+  <div class="container justify-content-center">
+  <div class="row">
+  <div class="col-6">
+  <h1>Ravencoin Testnet Faucet</h1>
+  Enter your RVN Testnet address below<br>
+  You can claim 1000 tRVN every 5 minutes<br>
+  <form>
+  <input type="text" name="address" id="address" size=45>&nbsp;<input type="button" id="claimbutton" value="Claim">
+  </form>
+  </div>
+  <div class="col-4">
+  <div id="status-panel">
+  Faucet status <span id="faucet-status"></span><br>
+  Balance <span id="faucet-balance"></span><br>
+  Block height <span id="faucet-height"></span><br>
+  </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-10">
+  <div id="response_text"></div></div>
+  </div>
+  </div>
+
+  
+</body>
+</html>
