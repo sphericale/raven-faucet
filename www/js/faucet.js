@@ -64,7 +64,7 @@ function postclaim(recaptcha_token) {
 
 $(document).ready(function(){
    if(!Cookies.get('faucet')) {
-   Cookies.set('faucet', gencookie(), {path: '' });
+   Cookies.set('faucet', gencookie(), {expires: 365, path: '' });
    }
    update_status();
    update_info();
