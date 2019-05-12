@@ -14,7 +14,18 @@ def check_ip(request_ip):
    now = int(time())
    time_limit = now-config.claim_timespan
 
-   query_result = db.query(f'SELECT COUNT(ip) FROM ip_claims WHERE claimtime > {time_limit}')
+   if ip_table.count() == 0:
+      print("ip_table empty, ip validation not active")
+      return True
+
+   try:
+      query_result = db.query(f'SELECT COUNT(ip) FROM ip_claims WHERE claimtime > {time_limit}')
+   except Exception as e:
+      if config.debug:
+         print(e)
+      else:
+         print("Error querying ip_claims table")
+      return True
 
    for c in query_result:
       count_result = c   

@@ -5,7 +5,7 @@ from ravencoin.core import COIN
 
 # faucet server listen host and port
 listen_host = "127.0.0.1"
-listen_port = 8080 
+listen_port = 8086
 
 # coin daemon url
 # specify as 'http://user:pass@host:port'
@@ -19,6 +19,8 @@ claim_amount = 1000*COIN
 claim_timespan = 60*60 # default 1 hour
 
 ip_claims_per = 14 # limit claims by ip to this many per claim_timespan
+
+x_real_ip = True # use cloudflare X-Real-IP header for IP
 
 claim_wait = 300 # wait time between claims in seconds (per user - enforced with address/cookie check)
 
@@ -56,7 +58,7 @@ else:
 
 ravencoin.SelectParams(args.network)
 
-faucet_address = "mfXKamgjfpJzd6Wu6pWWnvpeBv7yU43T67"
+faucet_address = "ms8T9r69qqdtxmotDioLVgeV9GH4XQgDEi"
 
 print(f"Faucet config: Listen host={listen_host}:{listen_port}, debug={debug}, Claim amount={claim_amount/COIN} {denom}, IP claim limit {ip_claims_per}/{claim_timespan/(60*60)} hr, wait between claims {claim_wait}s")
 
