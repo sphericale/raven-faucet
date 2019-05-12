@@ -17,9 +17,11 @@ async def claim(request):
    if config.debug:
       print(request.headers)
 
+   request_ip = ''
    if config.x_real_ip:
       request_ip = request.headers.get('X-Real-IP','')
-   else:
+
+   if request_ip == '':
       request_ip = request.remote # not secure!
 
    cookie = request.cookies.get(config.cookie_name,'')
@@ -32,6 +34,9 @@ async def claim(request):
    # anti-DoS / sanity check
    if len(claim_address) > config.maxAddressLen:
       print(f"Invalid request from IP {request_ip}: Address field too long (DoS?)",flush = True)
+      return web.json_response({'status': 'Error','msg':'Address is invalid'})
+   if claim_address == config.faucet_address:
+      print(f"Invalid request from IP {request_ip}: Address == faucet_address (DoS?)",flush = True)
       return web.json_response({'status': 'Error','msg':'Address is invalid'})
    if len(recaptcha) > 1024: # should be enough?!
       print(f"Invalid request from IP {request_ip}: Recaptcha field too long (DoS?)",flush = True)
