@@ -24,7 +24,8 @@ Coin daemon must be running with RPC server enabled (server=1 in raven.conf)
 
 For reCAPTCHAv3:  
 recaptcha_key in config.py is your secret key  
-site key is needed in www/faucet.html and www/js/faucet.js  
+recaptcha_site_key is your site key  
+leave blank to disable  
 
 **Running**  
 By default serves pages at 127.0.0.1:8086  
