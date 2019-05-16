@@ -1,5 +1,5 @@
 
-var recaptcha_key = "";
+var recaptcha_key = "{recaptcha_site_key}";
 
 function gencookie(){
   function chr4(){
@@ -20,19 +20,6 @@ function update_status() {
             },
           });
 }
-
-function update_info() {
-    $.ajax({
-            type: "GET",
-            url: "/info",
-            dataType: "json",
-            cache: false,
-            success: function(data) {
-              $('#faucet-address').text(data.faucet_address)
-            },
-          });
-}
-
 
 function postclaim(recaptcha_token) {
 
@@ -67,7 +54,6 @@ $(document).ready(function(){
    Cookies.set('faucet', gencookie(), {expires: 365, path: '' });
    }
    update_status();
-   update_info();
    setInterval(update_status,30000);
    $('#claimbutton').on('click', function(e) {
           e.preventDefault();

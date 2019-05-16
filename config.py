@@ -25,13 +25,26 @@ x_real_ip = True # use cloudflare X-Real-IP header for IP
 claim_wait = 300 # wait time between claims in seconds (per user - enforced with address/cookie check)
 
 recaptcha_key = "" # recaptcha3 secret key, leave blank to disable
+recaptcha_site_key = "" # public site key
 recaptcha_threshold = 0.5 # recaptcha score threshold for bot detection
 
-# mainnet coin name
-coin_name_mainnet = "RVN"
+static_files_max_age = 86400 # maximum amount of time (in seconds) a client should cache static files (index.html, faucet.js)
 
-# testnet coin name
-coin_name_testnet = "tRVN"
+coin_info = {
+
+   'testnet': {
+      'name': 'Ravencoin Testnet',
+      'ticker': 'tRVN',
+      'address': 'ms8T9r69qqdtxmotDioLVgeV9GH4XQgDEi'
+   },
+
+   'mainnet': {
+      'name': 'Ravencoin',
+      'ticker': 'RVN',
+      'address': 'R9TehGensN1CNkAXZbVgtYzPovE3FXC1Qu'
+   }
+
+}
 
 # database used to track claims
 database_fn = "./faucet.db"
@@ -51,14 +64,11 @@ args=parser.parse_args()
 
 debug = args.debug
 
-if args.network == 'testnet':
-   denom = coin_name_testnet
-else:
-   denom = coin_name_mainnet
+coin_name = coin_info[args.network]['name']
+denom = coin_info[args.network]['ticker']
+faucet_address = coin_info[args.network]['address']
 
 ravencoin.SelectParams(args.network)
-
-faucet_address = "ms8T9r69qqdtxmotDioLVgeV9GH4XQgDEi"
 
 print(f"Faucet config: Listen host={listen_host}:{listen_port}, debug={debug}, Claim amount={claim_amount/COIN} {denom}, IP claim limit {ip_claims_per}/{claim_timespan/(60*60)} hr, wait between claims {claim_wait}s")
 

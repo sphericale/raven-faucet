@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 from aiohttp import web
-from routes import index,claim,status,info
+from routes import index,js,claim,status,info
 import config
 
 def setup_routes(app):
     app.router.add_get('/', index)
-    app.router.add_static('/js', './www/js/')
+    app.router.add_get('/js/faucet.js', js)
     app.router.add_static('/css', './www/css/')
     app.router.add_post('/claim', claim)
     app.router.add_get('/status', status)

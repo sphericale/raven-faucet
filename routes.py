@@ -8,8 +8,23 @@ from ravencoin.core import b2lx, COIN
 from ravencoin.rpc import RavenProxy
    
 async def index(request):
-   return web.FileResponse('./www/faucet.html')
-   
+   with open('./www/faucet.html') as f:
+      index_s = f.read()
+      return web.Response(text=index_s.format(coin_name=config.coin_name,
+                                              claim_wait=config.claim_wait/60,
+                                              claim_amount=config.claim_amount/COIN,
+                                              denom=config.denom,
+                                              faucet_address=config.faucet_address,
+                                              recaptcha_site_key=config.recaptcha_site_key),
+                                              headers={'content-type': 'text/html','Cache-Control':f'max-age={config.static_files_max_age}'})
+
+async def js(request):
+   with open('./www/js/faucet.js') as f:
+      index_s = f.read()
+      return web.Response(text=index_s.replace("{recaptcha_site_key}",config.recaptcha_site_key),
+                          headers={'content-type': 'application/javascript','Cache-Control':f'max-age={config.static_files_max_age}'})
+
+                                           
 async def claim(request):
    # handle faucet claim
    data = await request.post()

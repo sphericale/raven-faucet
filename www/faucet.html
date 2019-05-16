@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Faucet</title>
-  <meta name="description" content="Faucet for Ravencoin Testnet">
+  <title>{coin_name} Faucet</title>
+  <meta name="description" content="Faucet for {coin_name}">
   <meta name="author" content="nbits">
-  <meta name="keywords" content="Faucet,Ravencoin,Testnet,Crypto,Cryptocurrency">
+  <meta name="keywords" content="Faucet,{coin_name},Crypto,Cryptocurrency">
 
   <link rel="stylesheet" href="css/faucet.css?v=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js?render=grecaptcha-key-goes-here"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render={recaptcha_site_key}"></script>
 </head>
 
 <body>
@@ -22,9 +22,9 @@
   <div class="container justify-content-center">
   <div class="row">
   <div class="col-6">
-  <h1>Ravencoin Testnet Faucet</h1>
-  Enter your RVN Testnet address below<br>
-  You can claim 1000 tRVN every 5 minutes<br>
+  <h1>{coin_name} Faucet</h1>
+  Enter your {coin_name} address below<br>
+  You can claim {claim_amount} {denom} every {claim_wait} minutes<br>
   <form>
   <input type="text" name="address" id="address" size=45>&nbsp;<input type="button" id="claimbutton" value="Claim">
   </form>
@@ -34,7 +34,7 @@
   Faucet status: <span id="faucet-status"></span><br>
   Balance: <span id="faucet-balance"></span><br>
   Block height: <span id="faucet-height"></span><br><br>
-  Faucet address: <span id="faucet-address"></span><br>
+  Faucet address: <span id="faucet-address">{faucet_address}</span><br>
   </div>
   </div>
   </div>
